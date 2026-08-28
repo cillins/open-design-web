@@ -39,11 +39,13 @@ pnpm tools-dev run web # 在前台启动 daemon + web
 # 打开 tools-dev 输出的 web URL
 ```
 
-如需将 desktop shell 和所有受管 sidecar 置于后台运行：
+如需将浏览器运行栈置于后台：
 
 ```bash
-pnpm tools-dev # 在后台启动 daemon + web + desktop
+pnpm tools-dev # 在后台启动 daemon + web
 ```
+
+如需使用可选的 Electron 外壳，运行 `pnpm tools-dev start desktop`。
 
 首次加载时，应用会检测可用的本地 runtime，并显示在 Settings 中配置的 BYOK runtime。选择 runtime、design template 与 design system，输入 prompt，然后点击 **Send**。结构化的本地 runtime 会写入规范项目文件并流式发送文件/工具事件；文件工作区和预览由这些写入更新。纯文本与 BYOK 运行则返回一个完整的 `<artifact>` 块供宿主解析。在记录或修改任何 artifact 存储路径之前，必须阅读仓库根目录 `AGENTS.md` 中的 **Daemon data directory contract**。
 
@@ -54,10 +56,11 @@ pnpm tools-dev # 在后台启动 daemon + web + desktop
 ## 其他脚本
 
 ```bash
-pnpm tools-dev                 # 在后台启动 daemon + web + desktop
+pnpm tools-dev                 # 在后台启动 daemon + web
 pnpm tools-dev start web       # 在后台启动 daemon + web
 pnpm tools-dev run web         # 在前台启动 daemon + web（e2e / dev server）
-pnpm tools-dev restart         # 重启 daemon + web + desktop
+pnpm tools-dev start desktop   # 可选 Electron 外壳 + daemon + web
+pnpm tools-dev restart         # 重启 daemon + web
 pnpm tools-dev restart --daemon-port 7457 --web-port 5175
 pnpm tools-dev status          # 检查托管的 runtime 状态
 pnpm tools-dev logs            # 查看 daemon / web / desktop 日志

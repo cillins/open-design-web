@@ -23,7 +23,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const WORKSPACE_ROOT = path.resolve(__dirname, "../../..");
 
 export const ALL_APPS = [APP_KEYS.DAEMON, APP_KEYS.WEB, APP_KEYS.DESKTOP] as const;
-export const DEFAULT_START_APPS = [APP_KEYS.DAEMON, APP_KEYS.WEB, APP_KEYS.DESKTOP] as const;
+// Browser-first default. Electron remains available through the explicit
+// `tools-dev start desktop` target, which pulls in daemon + web as dependencies.
+export const DEFAULT_START_APPS = [APP_KEYS.DAEMON, APP_KEYS.WEB] as const;
 export const DEFAULT_RUN_APPS = [APP_KEYS.DAEMON, APP_KEYS.WEB] as const;
 export const DEFAULT_STOP_APPS = [APP_KEYS.DESKTOP, APP_KEYS.WEB, APP_KEYS.DAEMON] as const;
 

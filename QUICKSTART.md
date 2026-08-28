@@ -176,11 +176,13 @@ pnpm tools-dev run web # starts daemon + web in the foreground
 # open the web URL printed by tools-dev
 ```
 
-For the desktop shell and all managed sidecars in the background:
+For the browser stack in the background:
 
 ```bash
-pnpm tools-dev # starts daemon + web + desktop in the background
+pnpm tools-dev # starts daemon + web in the background
 ```
+
+The optional Electron shell remains available with `pnpm tools-dev start desktop`.
 
 On first load, the app detects the available local runtimes and also offers BYOK runtimes configured in Settings. Choose a runtime, a design template, and a design system, then type a prompt and hit **Send**. Structured local runtimes write canonical project files and stream file/tool events; the file workspace and preview update from those writes. Plain text-only and BYOK runs instead return a complete `<artifact>` block for the host to parse. Before documenting or changing any artifact storage path, you MUST read `AGENTS.md` → **Daemon data directory contract**.
 
@@ -191,10 +193,11 @@ The **Templates** catalog comes from [`design-templates/`](design-templates/) an
 ## Other scripts
 
 ```bash
-pnpm tools-dev                 # daemon + web + desktop in the background
+pnpm tools-dev                 # daemon + web in the background
 pnpm tools-dev start web       # daemon + web in the background
 pnpm tools-dev run web         # daemon + web in the foreground (e2e/dev server)
-pnpm tools-dev restart         # restart daemon + web + desktop
+pnpm tools-dev start desktop   # optional Electron shell + daemon + web
+pnpm tools-dev restart         # restart daemon + web
 pnpm tools-dev restart --daemon-port 7457 --web-port 5175
 pnpm tools-dev status          # inspect managed runtimes
 pnpm tools-dev logs            # show daemon/web/desktop logs

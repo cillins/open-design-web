@@ -31,7 +31,7 @@
 
 ## 什么是 OpenDesign
 
-🎨 **本地优先、开源的 Claude Design 替代品。** &nbsp;🖥️ **macOS 与 Windows 原生桌面应用。** &nbsp;⚡ **100+ 功能技能 + 独立渲染模板目录** · ✨ **151 个品牌级设计系统包** · 📦 **277 个开箱即用的插件。** &nbsp;🖼️ 可生成 **Web · 桌面 · 移动端原型**、**实时仪表盘 / 工件**、**演示文稿**、**图片**、**视频**，以及 **HyperFrames** 动态图形。🔒 沙箱 iframe 预览 · HTML / PDF / PPTX / MP4 导出。&nbsp;🤖 **运行于 DeepSeek Harness (`dsh`) · Claude Code · OpenClaw · Codex · Cursor · OpenCode · Qwen · Copilot · Hermes · Kimi · Antigravity 等 26 个不同的本地 CLI 可执行程序**，或通过 BYOK 接入任何 OpenAI 兼容端点。
+🎨 **本地优先、开源的 Claude Design 替代品。** &nbsp;🌐 **自托管浏览器工作区，桌面外壳可选。** &nbsp;⚡ **100+ 功能技能 + 独立渲染模板目录** · ✨ **151 个品牌级设计系统包** · 📦 **277 个开箱即用的插件。** &nbsp;🖼️ 可生成 **Web · 桌面 · 移动端原型**、**实时仪表盘 / 工件**、**演示文稿**、**图片**、**视频**，以及 **HyperFrames** 动态图形。🔒 沙箱 iframe 预览 · HTML / PDF / PPTX / MP4 导出。&nbsp;🤖 **运行于 DeepSeek Harness (`dsh`) · Claude Code · OpenClaw · Codex · Cursor · OpenCode · Qwen · Copilot · Hermes · Kimi · Antigravity 等 25 个不同的本地 CLI 可执行程序**，或通过 BYOK 接入任何 OpenAI 兼容端点。
 
 OpenDesign 是这样一种产物：Anthropic 随 Claude Design 推出的 **Agent 原生**循环——发现需求、锁定方向、流式输出工件、评审、交付——不再封闭，而是变成了一个由**功能技能、渲染设计模板、设计系统和插件组成的文件系统**，你笔记本电脑上已有的编码 Agent 就能读取、编写和混搭。你的 CLI 变成设计引擎，你的笔记本变成工作坊，团队的 `DESIGN.md` 变成品牌契约。
 
@@ -259,7 +259,7 @@ OpenDesign (OD) 是开源替代品。同样的循环，同样的工件优先心�
 
 - 🤖 **Agent 原生，不绑定模型。** 我们不发布 Agent。你 `PATH` 上已有的 `claude` / `codex` / `cursor-agent` / `copilot` / `hermes` / `kimi` 就是设计引擎。一键切换。
 - 🧠 **默认品牌级。** 每次渲染都把当前包的 `DESIGN.md` 作为核心品牌契约读取。仓库随附 151 个设计系统包；旧包可以仅含 `DESIGN.md`，新包还可加入 `manifest.json`、`tokens.css`、组件、资产和来源信息。放入文件夹，选择器自动识别。
-- 🖥️ **本地优先，每一层都可 BYOK。** 原生桌面应用保持本地优先，不发生云端往返。在描述 daemon 数据路径之前，必须阅读仓库根目录 `AGENTS.md` 中的 **Daemon data directory contract**。
+- 🌐 **浏览器优先、本地优先，每一层都可 BYOK。** daemon 以一个可自托管应用同时提供 Web UI 与 API；Electron 仅作为可选外壳。在描述 daemon 数据路径之前，必须阅读仓库根目录 `AGENTS.md` 中的 **Daemon data directory contract**。
 - 🌍 **四个平面上可组合。** **插件**承载可运行的工作流 · 功能**技能**承载 Agent 行为 · **设计模板**承载渲染蓝图 · **设计系统**承载品牌。四者都采用可移植、可版本控制的目录，任何人都可以编写和发布。
 - 🔁 **刷新现有代码库。** 将 `git` 仓库 + `DESIGN.md` 交给 Agent，它就能将你的真实组件重构到品牌规范。专门的插件用于将 Figma / Pencil 工作流迁移到 React / Next.js / Vue 代码。
 - 🔒 **隐私信条。** 一切都运行在持有你数据的环境中——你的笔记本、你团队的服务器、你的 Vercel 项目。需要网络时有 SSRF 防护的 BYOK 代理。
@@ -269,7 +269,7 @@ OpenDesign (OD) 是开源替代品。同样的循环，同样的工件优先心�
 | | Claude Design | Figma | Lovable / v0 / Bolt | **OpenDesign** |
 |---|---|---|---|---|
 | 开源 | ❌ | ❌ | ❌ | **✅ Apache-2.0** |
-| 自托管 / 桌面 | ❌ | ❌ | ❌ | **✅ macOS + Windows + Docker** |
+| 自托管 / 浏览器 | ❌ | ❌ | ❌ | **✅ Docker + daemon 提供的 Web UI** |
 | Agent 原生（在 CLI 中运行） | 仅 Anthropic | ❌ | 仅云端 Agent | **✅ 25 CLI + BYOK** |
 | 品牌级 `DESIGN.md` | 私有 | Theme JSON | 有限 token | **✅ 151 系统随附** |
 | 技能 / 插件 / 模板 | 封闭 | 插件商店 | 封闭 | **✅ 100+ 功能技能 · 独立渲染模板目录 · 277 插件** |
@@ -281,15 +281,11 @@ OpenDesign (OD) 是开源替代品。同样的循环，同样的工件优先心�
 
 ## 快速开始
 
-### 🖥️ 下载桌面应用（推荐——零配置）
+### 🌐 打开 Web 应用（推荐）
 
-使用 OpenDesign 最快的方式。无需 Node、pnpm 或克隆仓库。
-
-- **macOS**（Apple Silicon · Intel x64）→ [**open-design.ai**](https://open-design.ai/) 或 [GitHub Releases](https://github.com/nexu-io/open-design/releases)
-- **Windows**（x64）→ [**open-design.ai**](https://open-design.ai/) 或 [GitHub Releases](https://github.com/nexu-io/open-design/releases)
-- **Linux**（AppImage，可选通道）→ [GitHub Releases](https://github.com/nexu-io/open-design/releases)
-
-安装后：应用自动检测 `PATH` 上的所有编码 Agent CLI，加载 100+ 功能技能、独立渲染模板目录和 151 个设计系统包，打开后即可在入口视图中输入需求。
+OpenDesign 默认作为 daemon 提供的浏览器应用运行。使用 Docker 可以获得隔离的
+BYOK 部署；从源码运行时，daemon 可以检测并调用宿主机已经安装的编码 Agent CLI。
+Electron 桌面外壳仍然保留，但不再属于默认启动路径。
 
 ### 🤖 安装到你的编码 Agent（无 UI）
 
