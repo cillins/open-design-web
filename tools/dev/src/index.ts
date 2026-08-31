@@ -1153,7 +1153,7 @@ function addPortOptions(command: ReturnType<typeof cli.command>) {
     .option("--prod", "use production build (requires pnpm --filter @open-design/web build first)");
 }
 
-addPortOptions(addSharedOptions(cli.command("start [app]", "Start daemon, web, desktop, or all when app is omitted")))
+addPortOptions(addSharedOptions(cli.command("start [app]", "Start the browser stack by default, or an explicit daemon, web, or desktop target")))
   .option("--parent-pid <pid>", "stop started apps when this owner process exits")
   .action(
     async (appName: string | undefined, options: CliOptions) => {
@@ -1184,7 +1184,7 @@ addPortOptions(addSharedOptions(cli.command("run [app]", "Start apps and keep th
   },
 );
 
-addSharedOptions(cli.command("status [app]", "Show app status for daemon, web, desktop, or all")).action(
+addSharedOptions(cli.command("status [app]", "Show browser-stack status by default, or status for an explicit app")).action(
   async (appName: string | undefined, options: CliOptions) => {
     printStatusResult(await status(resolveToolDevConfig(options), appName), options, appName);
   },
@@ -1199,14 +1199,14 @@ addSharedOptions(cli.command("stop [app]", "Stop daemon, web, desktop, or all wh
   },
 );
 
-addPortOptions(addSharedOptions(cli.command("restart [app]", "Restart daemon, web, desktop, or all when app is omitted"))).action(
+addPortOptions(addSharedOptions(cli.command("restart [app]", "Restart the browser stack by default, or an explicit app"))).action(
   async (appName: string | undefined, options: CliOptions) => {
     assertSupportedNodeRuntimeForStart();
     printRestartResult(await restartTargets(resolveToolDevConfig(options), appName, options), options);
   },
 );
 
-addSharedOptions(cli.command("logs [app]", "Show log tail for daemon, web, desktop, or all")).action(
+addSharedOptions(cli.command("logs [app]", "Show browser-stack logs by default, or logs for an explicit app")).action(
   async (appName: string | undefined, options: CliOptions) => {
     const config = resolveToolDevConfig(options);
     const targets = resolveTargetApps(appName, DEFAULT_START_APPS);
